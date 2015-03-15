@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.asus.cordovageoloc"
+    version="0.0.1">
+    <name>GeoLocation</name>
+    <description>MyAsus GeoLocation Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,geolocation</keywords>
+
+    <js-module src="www/CordovaGeoLoc.js" name="CordovaGeoLoc">
+        <clobbers target="plugins.CordovaGeoLoc" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CordovaGeoLoc" >
+                <param name="android-package" value="com.asus.cordovageoloc.CordovaGeoLoc"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/CordovaGeoLoc.java" target-dir="src/com/asus/cordovageoloc" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!--<activity android:name="ChatActivity" android:exported="true"/>-->
+            <uses-permission android:name="android.permission.INTERNET"/>
+        </config-file>
+    </platform>
+</plugin>
